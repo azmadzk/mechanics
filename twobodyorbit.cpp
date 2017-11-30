@@ -9,28 +9,28 @@ using namespace std;
 using namespace std::this_thread; // sleep_for, sleep_until
 using namespace std::chrono; // nanoseconds, system_clock, seconds
 
-int dimensions = 30;						//dimensions
+int dimensions = 30;				//dimensions
 
 float polrad(float coorx,float coory){		//cartesian to polar conversion
-	float r;								//returns the radius of given x and y coordinates
+	float r;				//returns the radius of given x and y coordinates
 	r=sqrt((coorx*coorx)+(coory*coory));
 	return r;
 }
 
 float poltheta(float coorx,float coory){	//cartesian to polar conversion
-	float theta;							//returns the angle of given x and y coordinates in radians
+	float theta;				//returns the angle of given x and y coordinates in radians
 	theta=tan(coory/coorx);
 	return theta;
 }
 
 float recx(float radius,float theta){		//polar to cartesian conversion
-	float coorx;							//returns the x coordinate of given r and angle coordinates
+	float coorx;				//returns the x coordinate of given r and angle coordinates
 	coorx=radius*cos(theta)+dimensions/2;
 	return coorx;
 }
 
 float recy(float radius,float theta){		//polar to cartesian conversion
-	float coory;							//returns the y coordinate of given r and angle coordinates
+	float coory;				//returns the y coordinate of given r and angle coordinates
 	coory=radius*sin(theta)+dimensions/2;
 	return coory;
 }
@@ -75,9 +75,9 @@ int main(){
 		cout<<endl;
 		}
 		sleep_for(nanoseconds(10000000));	//delay between frames
-		system("cls");						//reset console
-		dtheta=dt*h/pow(r,2);				//calculates dtheta
-		theta=theta+dtheta;					//calculates new true anomaly
+		system("cls");				//reset console
+		dtheta=dt*h/pow(r,2);			//calculates dtheta
+		theta=theta+dtheta;			//calculates new true anomaly
 		r=pow(h,2)/miu/(1+e*cos(theta));	//calculates two-body distance of a given true anomaly
 
 	}
